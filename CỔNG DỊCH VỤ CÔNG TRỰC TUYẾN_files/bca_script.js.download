@@ -1,0 +1,11 @@
+function getWords(input, numWord) {
+    return prototypeSub(input, " ", " ", numWord);
+}
+
+function prototypeSub(input, charIn, charOut, numWord){
+    var words = input.split(charIn);
+    if (words.length > numWord) {
+        words = words.slice(0, numWord);
+    }
+    return words.join(charOut);
+}
