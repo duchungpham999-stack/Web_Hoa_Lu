@@ -3,18 +3,21 @@
  */
 async function loadLayout() {
     try {
+        const isEnPage = window.location.pathname.includes('-en.html');
+
         // Nạp Header
-        const headerRes = await fetch('Header.html');
+        const headerRes = await fetch(isEnPage ? 'Header-en.html' : 'Header.html');
         const headerData = await headerRes.text();
         document.getElementById('header-placeholder').innerHTML = headerData;
 
         // Nạp Footer
-        const footerRes = await fetch('Footer.html');
+        const footerRes = await fetch(isEnPage ? 'Footer-en.html' : 'Footer.html');
         const footerData = await footerRes.text();
         document.getElementById('footer-placeholder').innerHTML = footerData;
 
         // Kích hoạt các tính năng sau khi nạp xong HTML
         initMenuLogic();
+        initMobileMenuLogic();
         initSearchLogic();
         initEmailFormLogic();
         initLangLogic();
@@ -27,12 +30,71 @@ async function loadLayout() {
     }
 }
 
+function initMobileMenuLogic() {
+    const toggle = document.querySelector('.mobile-menu-toggle');
+    const menu = document.querySelector('.menu');
+    const headerRight = document.querySelector('.header-right');
+
+    if (!toggle || !menu) return;
+
+    const closeMenu = () => {
+        menu.classList.remove('open');
+        headerRight?.classList.remove('open');
+        toggle.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.innerHTML = '<i class="fas fa-bars"></i>';
+        document.body.classList.remove('mobile-menu-open');
+    };
+
+    const openMenu = () => {
+        menu.classList.add('open');
+        headerRight?.classList.add('open');
+        toggle.classList.add('open');
+        toggle.setAttribute('aria-expanded', 'true');
+        toggle.innerHTML = '<i class="fas fa-times"></i>';
+        document.body.classList.add('mobile-menu-open');
+    };
+
+    toggle.addEventListener('click', () => {
+        if (menu.classList.contains('open')) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
+    });
+
+    document.addEventListener('click', (event) => {
+        if (!document.body.classList.contains('mobile-menu-open')) return;
+
+        const clickedInsideMenu = menu.contains(event.target);
+        const clickedInsideHeaderTools = headerRight?.contains(event.target);
+        const clickedToggle = toggle.contains(event.target);
+
+        if (!clickedInsideMenu && !clickedInsideHeaderTools && !clickedToggle) {
+            closeMenu();
+        }
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeMenu();
+    });
+
+    menu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeMenu);
+    });
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 900) closeMenu();
+    });
+}
+
 /**
  * 2. LOGIC MENU & HEADER SCROLL (Hỗ trợ Dropdown & Trang chi tiết)
  */
 function initMenuLogic() {
     let currentPage = window.location.pathname.split("/").pop();
     if (currentPage === "" || currentPage === "/") currentPage = "index.html";
+    const currentBasePage = currentPage.replace('-en.html', '.html');
 
     const menuLinks = document.querySelectorAll('.menu a');
 
@@ -42,21 +104,22 @@ function initMenuLogic() {
     const isServiceDetailPage = document.querySelector('.service-detail-page') !== null;
 
     // Danh sách các file con của Lĩnh vực hoạt động (Dropdown)
-    const serviceSubPages = ["Bat_dong_san.html", "Tai_chinh.html", "Cong_nghiep.html", "Dich_vu.html"];
+    const serviceSubPages = ["Bat_dong_san.html", "Tai_chinh.html", "Cong_nghiep.html", "Nong_nghiep.html", "Xuat-nhap-khau.html"];
 
     menuLinks.forEach(link => {
         const href = link.getAttribute('href');
         if (!href) return;
+        const hrefBase = href.replace('-en.html', '.html');
 
         // 1. Khớp chính xác tên file
         const isExactMatch = (href === currentPage);
 
         // 2. Logic Active cho trang Tuyển dụng & Tin tức
-        const isJobActive = href.includes("Tuyen_dung.html") && isJobDetailPage;
-        const isNewsActive = href.includes("Tin_tuc.html") && isNewsDetailPage;
+        const isJobActive = hrefBase.includes("Tuyen_dung.html") && isJobDetailPage;
+        const isNewsActive = hrefBase.includes("Tin_tuc.html") && isNewsDetailPage;
 
         // 3. Logic Active cho Lĩnh vực hoạt động (Bao gồm cả khi ở trang con của dropdown)
-        const isServiceActive = href.includes("Linh_vuc.html") && (isServiceDetailPage || serviceSubPages.includes(currentPage));
+        const isServiceActive = hrefBase.includes("Linh_vuc.html") && (isServiceDetailPage || serviceSubPages.includes(currentBasePage));
 
         if (isExactMatch || isJobActive || isNewsActive || isServiceActive) {
             link.classList.add('active');
@@ -202,6 +265,7 @@ function changeLang(lang) {
         if (currentPage === "index.html") targetPage = "index-en.html";
     } else {
         targetPage = currentPage.replace('-en.html', '.html');
+        if (currentPage === "index-en.html") targetPage = "index.html";
     }
     window.location.href = targetPage;
 }
@@ -220,14 +284,15 @@ function initLangLogic() {
  */
 async function initNewsLogic() {
     const newsGrid = document.querySelector('.news-grid');
+    const isEn = window.location.pathname.includes('-en.html');
     
     // Kiểm tra nếu trang hiện tại có chứa khung hiển thị tin tức thì mới chạy
     if (!newsGrid) return;
 
     try {
         // Đường dẫn file JSON chứa danh sách bài báo
-        const response = await fetch('news-data.json');
-        if (!response.ok) throw new Error("Không thể tải file dữ liệu tin tức");
+        const response = await fetch(isEn ? 'news-data-en.json' : 'news-data.json');
+        if (!response.ok) throw new Error(isEn ? "Unable to load news data" : "Không thể tải file dữ liệu tin tức");
         
         const newsData = await response.json();
 
@@ -251,15 +316,15 @@ async function initNewsLogic() {
                         <div class="news-excerpt-wrapper">
                             <p class="news-excerpt">${item.excerpt}</p>
                         </div>
-                        <a href="${item.link}" class="read-more-link">Xem thêm <i class="fas fa-long-arrow-alt-right"></i></a>
+                        <a href="${item.link}" class="read-more-link">${isEn ? 'Read more' : 'Xem thêm'} <i class="fas fa-long-arrow-alt-right"></i></a>
                     </div>
                 </article>
             `;
             newsGrid.insertAdjacentHTML('beforeend', newsHTML);
         });
     } catch (error) {
-        console.error("Lỗi khi nạp tin tức:", error);
-        newsGrid.innerHTML = '<p style="text-align:center; grid-column: 1/-1;">Hiện tại chưa có tin tức mới nhất.</p>';
+        console.error(isEn ? "Error loading news:" : "Lỗi khi nạp tin tức:", error);
+        newsGrid.innerHTML = `<p style="text-align:center; grid-column: 1/-1;">${isEn ? 'No news is available at the moment.' : 'Hiện tại chưa có tin tức mới nhất.'}</p>`;
     }
 }
 

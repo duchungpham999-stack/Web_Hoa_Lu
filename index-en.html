@@ -1,202 +1,145 @@
-<!DOCTYPE html>
-<html lang="vi">
+﻿<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Hoa Lư Land</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Hoa Lu Group</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
-<header class="header">
-    <div class="header-container">
-        <div class="logo-box">
-            <img src="logo-geleximco.png" alt="HOALU GROUP" class="logo-img">
-        </div>
+    <div id="header-placeholder"></div>
 
-        <nav class="menu">
-            <a href="#" class="active">HOME PAGE</a>
-            <a href="#">INTRODUCE</a>
-            <a href="#">ACTIVITY</a>
-            <a href="#">RECRUITMENT</a>
-            <a href="#">NEWS</a>
-            <a href="#">CONTACT</a>
-        </nav>
-
-        <div class="header-right">
-            <div class="lang-selector">
-                <i class="fas fa-globe"></i>
-                <span id="lang-vi" class="lang-item active" onclick="changeLang('vi')">VI</span>
-                <span class="divider">|</span>
-                <span id="lang-en" class="lang-item" onclick="changeLang('en')">EN</span>
-            </div>
-            <i class="fas fa-search search-icon"></i>
-        </div>
-    </div>
-</header>
-
-<!-- HERO -->
-<section class="hero">
-    <div class="overlay">
-        <h1>CREATING VALUE – SUSTAINABLE DEVELOPMENT</h1>
-    </div>
-</section>
-
-<!-- GIỚI THIỆU -->
-<section>
-    <h2>Introduce</h2>
-    <p>
-        Hoa Lư Import - Export Joint Stock Company –
-        Operates in the fields of import and export, real estate, legal consulting, and project developments.
-    </p>
-</section>
-
-<!-- LỊCH SỬ -->
-<section class="dark">
-    <h2>History</h2>
-    <p>Formed and developed through various stages with the goal of building a sustainable real estate ecosystem.</p>
-</section>
-
-<!-- LĨNH VỰC -->
-<section>
-    <h2>Lĩnh vực hoạt động</h2>
-    <div class="grid">
-        <div class="card">Tư vấn pháp lý BĐS</div>
-        <div class="card">Đầu tư dự án</div>
-        <div class="card">Quản lý rủi ro</div>
-        <div class="card">Chiến lược đầu tư</div>
-    </div>
-</section>
-
-<!-- SẢN PHẨM -->
-<section class="dark">
-    <h2>Sản phẩm & Dịch vụ</h2>
-    <div class="grid">
-        <div class="card">Thẩm định pháp lý</div>
-        <div class="card">Hướng dẫn phát triển dự án</div>
-        <div class="card">Hợp tác đầu tư</div>
-        <div class="card">Tư vấn NOXH</div>
-    </div>
-</section>
-
-<!-- DỰ ÁN -->
-<section>
-    <h2>Dự án tiêu biểu</h2>
-    <div class="grid">
-        <div class="project">Khu đô thị</div>
-        <div class="project">Chung cư</div>
-        <div class="project">Nhà ở xã hội</div>
-        <div class="project">Công nghiệp</div>
-    </div>
-</section>
-
-<!-- TIN TỨC -->
-<section class="dark">
-    <h2>Tin tức & Sự kiện</h2>
-    <div class="grid">
-        <div class="news">Tin tức 1</div>
-        <div class="news">Tin tức 2</div>
-        <div class="news">Tin tức 3</div>
-    </div>
-</section>
-
-<!-- LIÊN HỆ -->
-<section>
-    <h2>Liên hệ</h2>
-    <p>Địa chỉ: 36 Hoàng Cầu, Hà Nội</p>
-    <p>Hotline: 0349301248</p>
-    <p>Email: duchungpham2001@gmail.com</p>
-
-    <form>
-        <input type="text" placeholder="Họ tên">
-        <input type="email" placeholder="Email">
-        <textarea placeholder="Nội dung"></textarea>
-        <button>Gửi</button>
-    </form>
-</section>
-
-<!-- FOOTER-->
-<footer class="footer">
-
-    <!-- LOGO TRÊN CÙNG -->
-    <div class="footer-logo">HOALU</div>
-
-    <div class="footer-container">
-
-        <!-- CỘT 1 -->
-        <div class="col">
-            <h3>Công ty CP Xuất nhập khẩu Hoa Lư</h3>
-
-            <p class="info">
-                <span class="label">Điện thoại</span>
-                <span class="value">(+84) 349 301 248</span>
-            </p>
-
-            <p class="info">
-                <span class="label">Email</span>
-                <span class="value">duchungpham2001@gmail.com</span>
-            </p>
-
-            <p class="info">
-                <span class="label">Trụ sở</span>
-                <span class="value">Tòa nhà Skyline| 36 Hoàng Cầu, phường Ô Chợ Dừa, thành phố Hà Nội, Việt Nam</span>
-            </p>
-        </div>
-
-        <!-- CỘT 2 -->
-        <div class="col">
-            <h3 class="underline">VỀ CHÚNG TÔI</h3>
-            <ul class="footer-links">
-                <li><a href="#">LĨNH VỰC HOẠT ĐỘNG</a></li>
-                <li><a href="#">TUYỂN DỤNG</a></li>
-                <li><a href="#">TIN TỨC</a></li>
-                <li><a href="#">LIÊN HỆ</a></li>
-            </ul>
-        </div>
-        
-        <!-- CỘT 3 -->
-        <div class="col">
-            <h3 class="underline">LĨNH VỰC HOẠT ĐỘNG</h3>
-            <ul class="footer-links">
-                <li><a href="#">BẤT ĐỘNG SẢN</a></li>
-                <li><a href="#">TÀI CHÍNH</a></li>
-                <li><a href="#">CÔNG NGHIỆP</a></li>
-                <li><a href="#">DỊCH VỤ</a></li>
-            </ul>
-        </div>
-
-        <!-- CỘT 4 -->
-        <div class="col">
-            <h3>ĐĂNG KÝ NHẬN TIN</h3>
-            <p>Đăng ký email để cập nhật thông tin nhanh chóng và chính xác nhất</p>
-
-            <div class="social-links">
-                <a href="https://www.linkedin.com/company/hoalu" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://www.facebook.com/hoalugroup" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/hoalu.land" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.youtube.com/@hoalu" target="_blank"><i class="fab fa-youtube"></i></a>
-            </div>
-
-            <form id="emailForm" action="https://script.google.com/macros/s/AKfycbxK8Jvn00EUoGxScOSqfqxIh5jFQFvRhwU9dPNpX0TS8PH6kWJuzQjdvPUGtLDnoPbeYw/exec" method="POST">
-                <div class="subscribe-box">
-                    <input type="email" name="email" placeholder="Email" required>
-                    <button type="submit">Đăng ký</button>
+    <main>
+        <section class="main-intro-section">
+            <div class="main-intro-overlay"></div>
+            <div class="main-intro-container"> 
+                <div class="main-intro-text-box"> 
+                    <span class="main-intro-subtitle">CREATING SUSTAINABLE VALUE</span>
+                    <h1>HOA LU IMPORT EXPORT<br>JOINT STOCK COMPANY</h1>
+                    <p class="main-intro-description">A leading multi-sector ecosystem built around real estate, high-tech industry, and sustainable agriculture.</p>
+                <div class="main-intro-btns">
+                    <a href="Linh_vuc-en.html" class="btn-primary-red">EXPLORE NOW</a>
+                    <a href="Gioi_thieu-en.html" class="btn-outline-light">ABOUT US</a>
                 </div>
-                <p id="form-message" style="margin-top: 10px; font-size: 14px; display: none;"></p>
-            </form>
+            </div>
+            </div>
+        </section>
+
+        <section class="hl-about-refined">
+    <div class="bg-watermark">HOA LU GROUP</div>
+    <div class="container-custom">
+        <div class="refined-grid">
+            <div class="refined-content">
+                <div class="section-tag">Since 2008</div>
+                <h2 class="refined-title">Creating Value <br> <span class="red-text">Sustainable Prosperity</span></h2>
+                <div class="refined-divider"></div>
+                
+                <p class="refined-p text-left">
+                    Guided by the ambition to become a leading import-export company, Hoa Lu continuously innovates and connects core values from Vietnam with modern global technologies.
+                </p>
+
+                <div class="refined-features">
+                    <div class="feature-line">
+                        <span class="f-num">01</span>
+                        <span class="f-text">Sustainable Development</span>
+                    </div>
+                    <div class="feature-line">
+                        <span class="f-num">02</span>
+                        <span class="f-text">International Standards</span>
+                    </div>
+                </div>
+                <a href="Gioi_thieu-en.html" class="refined-btn">Discover Our Story</a>
+            </div>
+
+            <div class="refined-visual">
+                <div class="image-stack">
+                    <div class="img-top"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800"></div>
+                    <div class="img-bottom"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=600"></div>
+                    <div class="deco-frame"></div>
+                </div>
+            </div>
         </div>
-
     </div>
+</section>
 
-    <div class="footer-bottom">
-        <p>Copyright @ 2026 Hoa Lu Group. All Right Reserved</p>
+<section class="hl-partners">
+    <div class="container-custom">
+        <div class="partners-header">
+            <h3>STRATEGIC PARTNERS</h3>
+            <div class="short-line"></div>
+        </div>
+        <div class="partners-slider">
+            <div class="partner-item"><img src="images/Gele_files/logo2.svg" alt="GELEXIMCO"></div>
+            <div class="partner-item"><img src="logo/phucloc.png" alt="Phúc Lộc Group"></div>
+            <div class="partner-item"><img src="images/ABB.jpg" alt="AB BANK"></div>
+            <div class="partner-item"><img src="lg7.png" alt="Glexhome"></div>
+            <div class="partner-item"><img src="Công ty Cổ phần Glexhomes_files/zalo_screenshot_8_9_2023_939127-dXBsb2Fk-small.png" alt="HTL"></div>
+            <div class="partner-item"><img src="logocienco14removebgpreview.png" alt="Cienco 8"></div>
+            <div class="partner-item"><img src="images/Logo HCS.png" alt="Hoàng Cát Sơn"></div>
+        </div>
     </div>
+</section>
 
-</footer>
+        <section class="hl-services-grid">
+    <div class="container-custom">
+        <div class="section-header">
+            <h2>BUSINESS SECTORS</h2>
+            <div class="red-line"></div>
+        </div>
+        <div class="fields-grid">
+            <a href="Bat_dong_san-en.html" class="hl-field-card">
+                <div class="hl-field-img">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800" alt="Bất động sản">
+                </div>
+                <div class="hl-field-info">
+                    <i class="fas fa-city"></i>
+                    <h3>Real Estate</h3>
+                    <p>Creating sustainable living value through every modern project.</p>
+                </div>
+            </a>
 
-<!-- FONT AWESOME -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+            <a href="Cong_nghiep-en.html" class="hl-field-card">
+                <div class="hl-field-img">
+                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=800" alt="Công nghiệp">
+                </div>
+                <div class="hl-field-info">
+                    <i class="fas fa-industry"></i>
+                    <h3>Industry</h3>
+                    <p>Industrial infrastructure and smart logistics systems.</p>
+                </div>
+            </a>
 
-<script src="script.js"></script>
+            <a href="Nong_nghiep-en.html" class="hl-field-card">
+                <div class="hl-field-img">
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800" alt="Nông nghiệp">
+                </div>
+                <div class="hl-field-info">
+                    <i class="fas fa-seedling"></i>
+                    <h3>Agriculture</h3>
+                    <p>Producing and exporting high-quality agricultural products to international standards.</p>
+                </div>
+            </a>
+            <a href="Xuat-nhap-khau-en.html" class="hl-field-card">
+                <div class="hl-field-img">
+                    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800" alt="Xuất nhập khẩu Hoa Lư">
+                </div>
+                <div class="hl-field-info">
+                    <i class="fas fa-ship"></i>
+                    <h3>Import & Export</h3>
+                    <p>Connecting global trade and bringing Vietnamese products to the world.</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="script.js"></script>
 </body>
 </html>
+

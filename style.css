@@ -15,6 +15,11 @@ body {
     line-height: 1.6;
 }
 
+.container-custom {
+    width: min(1180px, calc(100% - 48px));
+    margin: 0 auto;
+}
+
 /* HEADER LUÔN CỐ ĐỊNH VÀ MÀU TRẮNG */
 .header {
     background: #ffffff !important; /* Ép buộc màu trắng */
@@ -42,19 +47,21 @@ body {
 
 /* LOGO */
 .header .logo-header {
-    height: 100px; /* Tăng từ 45px lên 65px hoặc mức bạn thấy vừa mắt */
+    height: 56px;
+    max-width: 118px;
     width: auto;
     object-fit: contain;
     transition: all 0.3s ease;
-    padding: 5px 0; /* Tạo khoảng cách trên dưới một chút cho thoáng */
+    padding: 0;
 }
 
 /* Đảm bảo khung chứa logo không khống chế chiều cao quá chặt */
 .header .logo-box {
     display: flex;
     align-items: center;
+    justify-content: center;
     height: 100%;
-    min-width: 150px; /* Đảm bảo đủ không gian chiều ngang */
+    min-width: 118px;
 }
 
 /* MENU CHÍNH */
@@ -223,7 +230,7 @@ section {
 .footer {
     position: relative;
     background: url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab") center/cover;
-    padding: 140px 10% 40px; /* Tăng padding top để nhường chỗ cho logo */
+    padding: 110px 8% 32px;
     color: var(--white);
     overflow: hidden;
 }
@@ -240,26 +247,26 @@ section {
 /* Định vị lại Logo */
 .footer-logo {
     position: absolute;
-    top: 15px;
-    left: 6.5%;
+    top: 12px;
+    left: 8%;
     z-index: 5; /* Cao hơn lớp phủ đỏ (z-index: 1) */
 }
 
 .logo-img {
-    height: 150px; /* Tăng từ 50px lên 90px hoặc tùy ý bạn */
+    height: 118px;
     width: auto;  /* Giữ nguyên tỉ lệ ảnh để không bị méo */
     display: block;
-    margin-bottom: 20px; /* Tạo khoảng cách với tên công ty phía dưới */
+    margin-bottom: 12px;
     filter: brightness(0) invert(1); /* Giữ màu trắng cho logo */
     transition: all 0.3s ease; /* Hiệu ứng mượt mà khi tải trang */
 }
 
 /* Chỉnh chữ trong Footer thon gọn hơn giống Geleximco */
 .footer .col h3 {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
     letter-spacing: 1.5px; /* Làm chữ thon và thoáng hơn */
-    margin-bottom: 25px;
+    margin-bottom: 18px;
     position: relative;
     z-index: 2;
 }
@@ -269,7 +276,7 @@ section {
     z-index: 2; /* Đẩy nội dung lên trên lớp phủ */
     display: grid;
     grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
-    gap: 50px;
+    gap: 34px;
 }
 
 /* Định dạng nội dung cột */
@@ -361,7 +368,7 @@ section {
 .footer input[type="email"] {
     width: 100%;
     max-width: 320px;
-    padding: 14px 25px;
+    padding: 12px 20px;
     border-radius: 50px;
     border: none;
     outline: none;
@@ -369,8 +376,8 @@ section {
 }
 
 .footer button {
-    margin-top: 15px;
-    padding: 12px 40px;
+    margin-top: 12px;
+    padding: 10px 32px;
     border-radius: 50px;
     background: var(--bright-red);
     color: var(--white);
@@ -402,8 +409,8 @@ section {
 .footer-bottom {
     position: relative;
     z-index: 2;
-    margin-top: 60px;
-    padding-top: 20px;
+    margin-top: 36px;
+    padding-top: 16px;
     border-top: 1px solid rgba(255,255,255,0.2);
     text-align: center;
     
@@ -812,7 +819,7 @@ section {
 }
 
 .job-detail-page {
-    padding: 60px 0;
+    padding: calc(var(--header-height) + 36px) 0 60px;
     background-color: #fff;
 }
 
@@ -821,7 +828,7 @@ section {
     display: flex;
     gap: 50px;
     align-items: flex-start;
-    padding-top: 100px; /* Thêm padding để không bị Header che mất */
+    padding-top: 0;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -1345,6 +1352,21 @@ section {
     align-items: flex-start;
 }
 
+.service-content-split {
+    align-items: stretch;
+}
+
+.service-content-split .intro-text-column,
+.service-content-split .projects-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.service-content-split .section-title {
+    margin-top: 0;
+    margin-bottom: 24px;
+}
+
 .intro-text-column { flex: 0 0 350px; }
 .desc-text {
     font-size: 16px;
@@ -1410,10 +1432,29 @@ section {
     margin: 0 auto;
     text-align: center;
     flex-wrap: wrap;
+    gap: 18px;
+    padding: 0 24px;
 }
 
-.stat-item h4 { font-size: 2.5rem; color: #b31f24; margin: 0; }
-.stat-item p { font-size: 14px; opacity: 0.8; }
+.stat-item {
+    flex: 1 1 180px;
+    min-width: 0;
+    padding: 0 10px;
+}
+
+.stat-item h4 {
+    font-size: clamp(28px, 3vw, 38px);
+    color: #b31f24;
+    margin: 0 0 6px;
+    line-height: 1;
+}
+
+.stat-item p {
+    font-size: 13px;
+    line-height: 1.35;
+    opacity: 0.85;
+    margin: 0;
+}
 
 /* Layout chung */
 .container-detail {
@@ -2098,36 +2139,42 @@ html {
 }
 
 .hl-about-refined {
-    padding: 120px 0;
-    background: #ffffff;
+    padding: 100px 0;
+    background: #ffffff !important;
     position: relative;
     overflow: hidden;
+    color-scheme: light;
 }
 
 /* Chữ mờ chạy phía sau */
 .bg-watermark {
     position: absolute;
-    top: 50%;
-    left: 5%;
-    transform: translateY(-50%);
-    font-size: 180px;
+    top: 54%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(76px, 10vw, 150px);
     font-weight: 900;
-    color: #f7f7f7;
+    color: rgba(180, 31, 36, 0.055);
     z-index: 0;
     white-space: nowrap;
     user-select: none;
+    line-height: 0.9;
 }
 
 .refined-grid {
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 100px;
+    grid-template-columns: minmax(620px, 1.08fr) minmax(420px, 0.92fr);
+    gap: 56px;
     align-items: center;
     position: relative;
     z-index: 1;
 }
 
 /* Cột Content */
+.refined-content {
+    max-width: 680px;
+}
+
 .section-tag {
     color: var(--primary-red);
     font-weight: 700;
@@ -2138,13 +2185,17 @@ html {
 }
 
 .refined-title {
-    font-size: 46px;
+    font-size: clamp(34px, 3.2vw, 52px);
     font-weight: 800;
     line-height: 1.1;
     color: #111;
+    margin: 0;
 }
 
-.red-text { color: var(--primary-red); }
+.red-text {
+    color: var(--primary-red);
+    white-space: nowrap;
+}
 
 .refined-divider {
     width: 60px;
@@ -2154,7 +2205,7 @@ html {
 }
 
 .refined-p {
-    font-size: 18px;
+    font-size: 17px;
     color: #555;
     line-height: 1.8;
     margin-bottom: 40px;
@@ -2199,11 +2250,13 @@ html {
 /* Cột Visual (Ảnh chồng lớp) */
 .image-stack {
     position: relative;
-    height: 500px;
+    height: 460px;
+    max-width: 620px;
+    margin-left: auto;
 }
 
 .img-top {
-    width: 80%;
+    width: 78%;
     position: absolute;
     top: 0;
     right: 0;
@@ -2211,36 +2264,48 @@ html {
     box-shadow: 20px 20px 60px rgba(0,0,0,0.1);
 }
 
-.img-top img { width: 100%; border-radius: 4px; }
+.img-top img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    border-radius: 4px;
+    display: block;
+}
 
 .img-bottom {
-    width: 60%;
+    width: 68%;
     position: absolute;
-    bottom: 40px;
+    bottom: 34px;
     left: 0;
     z-index: 3;
     border: 10px solid #fff;
     box-shadow: -10px 10px 40px rgba(0,0,0,0.1);
 }
 
-.img-bottom img { width: 100%; border-radius: 2px; }
+.img-bottom img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    border-radius: 2px;
+    display: block;
+}
 
 .deco-frame {
     position: absolute;
     bottom: 0;
-    right: 40px;
-    width: 70%;
-    height: 80%;
+    right: 48px;
+    width: 68%;
+    height: 74%;
     border: 2px solid var(--primary-red);
     z-index: 1;
-    opacity: 0.2;
+    opacity: 0.18;
 }
 
 /* Căn trái đoạn mô tả */
 .refined-p.text-left {
     text-align: left; /* Đảm bảo căn lề trái */
     margin-left: 0;
-    max-width: 800px; /* Giới hạn độ rộng để đọc dễ hơn */
+    max-width: 560px; /* Giới hạn độ rộng để đọc dễ hơn */
 }
 
 /* --- SECTION ĐỐI TÁC --- */
@@ -2321,28 +2386,71 @@ html {
 /* Mobile */
 @media (max-width: 992px) {
     .refined-grid { grid-template-columns: 1fr; gap: 60px; }
+    .refined-content { max-width: 720px; }
     .bg-watermark { display: none; }
-    .image-stack { height: 400px; }
+    .image-stack { height: 400px; margin: 0; max-width: 100%; }
+}
+
+@media (max-width: 600px) {
+    .container-custom {
+        width: min(100% - 32px, 1180px);
+    }
+
+    .hl-about-refined {
+        padding: 72px 0;
+    }
+
+    .refined-title {
+        font-size: 34px;
+    }
+
+    .red-text {
+        white-space: normal;
+    }
+
+    .refined-p {
+        font-size: 16px;
+    }
+
+    .image-stack {
+        height: 330px;
+    }
+
+    .img-top {
+        width: 82%;
+    }
+
+    .img-bottom {
+        width: 74%;
+        border-width: 8px;
+    }
 }
 
 /* --- TỐI ƯU LĨNH VỰC HOẠT ĐỘNG --- */
 .hl-services-grid {
-    padding: 60px 0; /* Thu nhỏ padding để bớt dài */
+    padding: 70px 0; /* Thu nhỏ padding để bớt dài */
     background-color: #fcfcfc;
+}
+
+.hl-services-grid .container-custom {
+    width: min(1480px, calc(100% - 64px));
 }
 
 .hl-services-grid .fields-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 28px;
+    align-items: stretch;
 }
 
 .hl-field-card {
     background: #fff;
-    border-radius: 12px;
+    border-radius: 10px;
     overflow: hidden;
     text-decoration: none;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
     transition: all 0.4s ease;
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     border: 1px solid #eee;
@@ -2356,7 +2464,7 @@ html {
 }
 
 .hl-field-img {
-    height: 200px; /* Giảm chiều cao ảnh để gọn hơn */
+    height: 190px; /* Giảm chiều cao ảnh để gọn hơn */
     overflow: hidden;
 }
 
@@ -2372,9 +2480,10 @@ html {
 }
 
 .hl-field-info {
-    padding: 25px 20px;
+    padding: 26px 18px 24px;
     text-align: center;
     position: relative;
+    flex: 1;
 }
 
 /* Icon nổi - Hiệu ứng đồng bộ */
@@ -2410,13 +2519,29 @@ html {
 .hl-field-info p {
     color: #777;
     font-size: 14px;
-    line-height: 1.5;
+    line-height: 1.55;
     margin: 0;
     /* Giới hạn text để các card luôn bằng nhau */
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+}
+
+@media (max-width: 1200px) {
+    .hl-services-grid .fields-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 640px) {
+    .hl-services-grid .container-custom {
+        width: min(100% - 32px, 1480px);
+    }
+
+    .hl-services-grid .fields-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* --- SECTION TẠI SAO CHỌN CHÚNG TÔI --- */
@@ -2569,6 +2694,7 @@ html {
     padding: 30px;
     z-index: 2;
     background: linear-gradient(to top, rgba(0,0,0,0.95) 20%, rgba(0,0,0,0.4) 60%, transparent 100%);
+    box-sizing: border-box;
     
     /* Cố định layout theo dạng cột */
     display: flex;
@@ -2587,12 +2713,15 @@ html {
 /* Đảm bảo tiêu đề phía trên cũng không làm lệch hàng */
 .s-content h4 {
     grid-row: 3;
-    height: 54px; /* Giữ chỗ cho 2 dòng tiêu đề */
+    min-height: 48px; /* Giữ chỗ cho 2 dòng tiêu đề */
+    height: auto;
     display: flex;
     align-items: flex-end; /* Đẩy tiêu đề xuống sát phần mô tả */
     margin: 0;
     font-size: 20px;
+    line-height: 1.25;
     color: #fff;
+    overflow-wrap: anywhere;
 }
 
 .s-content p {
@@ -2600,29 +2729,32 @@ html {
     grid-row: 6; 
     
     /* 2. Căn chỉnh chữ theo kiểu Content Split */
-    font-size: 14px;
+    font-size: 13px;
     color: #ddd;
-    line-height: 1.6; /* Tăng nhẹ để chữ dễ đọc, không bị dính */
+    line-height: 1.55; /* Tăng nhẹ để chữ dễ đọc, không bị dính */
     margin-top: 12px;
-    text-align: justify; /* Cân bằng đều hai bên như khối intro bạn muốn */
+    text-align: left;
     
     /* 3. Khống chế khoảng trống (Padding & Width) */
-    width: 300px;
-    padding-right: 50px; /* Tạo khoảng hở nhỏ bên phải để không chạm mép box */
+    width: 100%;
+    max-width: 100%;
+    padding-right: 0;
 
     /* 4. Khóa chiều cao cố định để các box luôn bằng nhau */
     /* Với line-height 1.6 và font 14px, 4 dòng sẽ rơi vào khoảng 90px */
-    height: 90px; 
+    min-height: 78px;
+    height: auto;
     
     /* 5. Cắt chữ thông minh theo chuẩn line-clamp */
     display: -webkit-box;
-    -webkit-line-clamp: 4; /* Giới hạn đúng 4 dòng để lấp đầy 90px trên */
+    -webkit-line-clamp: 4; /* Giới hạn đúng 4 dòng để ô luôn gọn */
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
     
     /* Hỗ trợ tương thích chuẩn */
     line-clamp: 4;
+    overflow-wrap: anywhere;
 }
 
 /* Thêm điểm nhấn nhỏ để phân tách với tiêu đề phía trên (Giống kiểu benefit box) */
@@ -2658,6 +2790,145 @@ html {
 .service-box:hover i {
     color: #fff;
     font-size: 45px;
+}
+
+.field-detail-page .services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    max-width: 980px;
+    margin: 0 auto;
+}
+
+.field-detail-page .service-box {
+    min-width: 0;
+    min-height: 260px;
+    display: grid;
+    grid-template-columns: minmax(260px, 0.9fr) minmax(0, 1.1fr);
+    overflow: hidden;
+    border-radius: 10px;
+    background: #111;
+}
+
+.field-detail-page .service-box::after {
+    display: none;
+}
+
+.field-detail-page .s-img {
+    position: relative;
+    height: 100%;
+    min-height: 260px;
+}
+
+.field-detail-page .s-content {
+    position: relative;
+    inset: auto;
+    width: auto;
+    height: auto;
+    min-height: 260px;
+    padding: 34px;
+    background: #171717;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.field-detail-page .s-content h4 {
+    min-height: 0;
+}
+
+.field-detail-page .s-content p {
+    display: block;
+    min-height: 0;
+    height: auto;
+    overflow: visible;
+    text-overflow: clip;
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
+}
+
+.field-detail-page .service-box:hover .s-img {
+    transform: none;
+}
+
+.field-detail-page .service-box:hover .s-content {
+    background: #b31f24;
+    text-align: left;
+}
+
+.field-detail-page .service-box:hover i {
+    font-size: 30px;
+}
+
+/* --- CONTACT / NEWS / CAREERS STABILITY --- */
+.contact-section,
+.news-archive-page,
+.job-opportunity {
+    overflow-x: hidden;
+}
+
+.contact-grid,
+.news-grid,
+.job-list-section,
+.filter-container {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.contact-form-container,
+.contact-form-container form,
+.map-box,
+.map-box iframe {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.contact-form-container input,
+.contact-form-container textarea,
+.filter-item select {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.news-archive-page .container {
+    width: min(1180px, calc(100% - 48px));
+    max-width: 1180px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.news-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.recruitment-hero .hero-overlay {
+    width: min(1180px, calc(100% - 32px));
+    margin: 0 auto;
+}
+
+.filter-container {
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.filter-item {
+    min-width: min(320px, 100%);
+    flex: 1 1 300px;
+}
+
+.job-opportunity {
+    padding-left: 16px;
+    padding-right: 16px;
+    box-sizing: border-box;
+}
+
+.job-list-section {
+    width: min(1100px, 100%);
+}
+
+.recruitment-table {
+    table-layout: auto;
 }
 
 /* --- BANNER XUẤT NHẬP KHẨU LỚN --- */
@@ -2731,6 +3002,905 @@ html {
     .field-banner-xnk h1 { font-size: 38px; }
     .banner-overlay-gradient {
         background: rgba(0,0,0,0.6); /* Phủ đều trên mobile để dễ đọc */
+    }
+}
+
+/* --- MOBILE APP-LIKE LAYOUT --- */
+.mobile-menu-toggle {
+    display: none;
+    width: 44px;
+    height: 44px;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    background: #fff;
+    color: #222;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+@media (max-width: 900px) {
+    :root {
+        --header-height: 68px;
+    }
+
+    body.mobile-menu-open {
+        overflow: hidden;
+    }
+
+    .header {
+        height: var(--header-height);
+    }
+
+    .header-container {
+        width: min(100% - 24px, 1400px);
+        gap: 12px;
+    }
+
+    .header .logo-header {
+        height: 44px;
+        max-width: 92px;
+    }
+
+    .header .logo-box {
+        min-width: auto;
+    }
+
+    .mobile-menu-toggle {
+        display: inline-flex;
+        margin-left: auto;
+        order: 3;
+        z-index: 1201;
+    }
+
+    .menu,
+    .header-right {
+        position: fixed;
+        left: 0;
+        right: 0;
+        display: none;
+        background: #fff;
+        z-index: 1100;
+    }
+
+    .menu {
+        top: var(--header-height);
+        height: auto;
+        max-height: calc(100vh - var(--header-height) - 92px);
+        overflow-y: auto;
+        padding: 8px 16px 14px;
+        flex-direction: column;
+        align-items: stretch;
+        box-shadow: 0 18px 35px rgba(0,0,0,0.12);
+    }
+
+    .menu.open,
+    .header-right.open {
+        display: flex;
+    }
+
+    .menu a,
+    .menu li {
+        height: auto;
+        width: 100%;
+    }
+
+    .menu a {
+        min-height: 48px;
+        padding: 0 14px;
+        border-radius: 8px;
+        justify-content: space-between;
+    }
+
+    .menu a.active,
+    .menu a:hover {
+        background: #c40000;
+        color: #fff;
+    }
+
+    .menu li.dropdown {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .dropdown-content {
+        position: static;
+        display: block;
+        min-width: 0;
+        width: 100%;
+        box-shadow: none;
+        border-top: 0;
+        padding: 2px 0 6px 12px;
+        background: #fff;
+    }
+
+    .dropdown-content li a {
+        font-size: 13px;
+        min-height: 42px;
+        color: #555;
+        background: #f7f7f7;
+        margin-top: 6px;
+    }
+
+    .header-right {
+        top: calc(var(--header-height) + min(430px, calc(100vh - var(--header-height) - 92px)));
+        min-height: 92px;
+        padding: 12px 16px 16px;
+        border-top: 1px solid #eee;
+        box-shadow: 0 18px 35px rgba(0,0,0,0.12);
+        align-items: center;
+        gap: 12px;
+    }
+
+    .lang-selector {
+        flex: 0 0 auto;
+    }
+
+    .search-container {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .search-container input {
+        width: 100%;
+        height: 42px;
+        box-sizing: border-box;
+    }
+
+    .main-intro-section {
+        min-height: 620px;
+        height: auto;
+        padding-top: var(--header-height);
+        background-attachment: scroll;
+        background-position: center;
+    }
+
+    .main-intro-overlay {
+        background: linear-gradient(to bottom, rgba(0,0,0,0.78), rgba(0,0,0,0.52));
+    }
+
+    .main-intro-container {
+        width: min(100% - 32px, 1300px);
+        padding: 0;
+    }
+
+    .main-intro-text-box {
+        max-width: 100%;
+        text-align: left;
+    }
+
+    .main-intro-text-box h1 {
+        font-size: clamp(34px, 11vw, 52px);
+    }
+
+    .main-intro-description {
+        font-size: 16px;
+        line-height: 1.65;
+    }
+
+    .main-intro-btns {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .main-intro-btns a,
+    .refined-btn {
+        text-align: center;
+    }
+
+    section {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .hl-about-refined {
+        padding: 64px 0;
+    }
+
+    .refined-grid,
+    .header-split,
+    .content-split,
+    .contact-grid {
+        grid-template-columns: 1fr !important;
+        flex-direction: column;
+        gap: 34px;
+    }
+
+    .refined-content,
+    .refined-p.text-left {
+        max-width: 100%;
+    }
+
+    .image-stack {
+        height: 320px;
+    }
+
+    .img-top {
+        width: 84%;
+    }
+
+    .img-bottom {
+        width: 76%;
+        border-width: 8px;
+    }
+
+    .partners-slider {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 18px;
+    }
+
+    .partner-item {
+        min-height: 72px;
+    }
+
+    .partner-item img {
+        max-width: 120px;
+        max-height: 54px;
+    }
+
+    .hl-services-grid .container-custom,
+    .container-custom {
+        width: min(100% - 32px, 1180px);
+    }
+
+    .hl-services-grid .fields-grid,
+    .category-grid,
+    .services-grid,
+    .strengths-grid,
+    .values-grid,
+    .project-grid,
+    .industrial-grid,
+    .agri-grid,
+    .financial-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .hl-field-card {
+        border-radius: 8px;
+    }
+
+    .hl-field-img {
+        height: 190px;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr !important;
+        gap: 28px;
+    }
+
+    .footer {
+        padding: 82px 16px 28px !important;
+    }
+
+    .footer-logo {
+        position: relative;
+        top: auto;
+        left: auto;
+        margin: 0 auto 18px;
+        width: calc(100% - 32px);
+        text-align: center;
+    }
+
+    .footer-logo .logo-img,
+    .logo-img {
+        height: 82px;
+        margin: 0 auto 10px;
+    }
+
+    .footer-bottom {
+        margin-top: 28px;
+    }
+
+    .job-detail-page {
+        padding: 36px 0 48px;
+    }
+
+    .job-flex-wrapper {
+        padding-top: 0 !important;
+    }
+
+    .contact-section,
+    .container-detail {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+
+    .map-box iframe {
+        width: 100%;
+        height: 320px;
+    }
+
+    .recruitment-table {
+        min-width: 720px;
+    }
+
+    .job-list-section {
+        overflow-x: auto;
+    }
+
+    .container,
+    .container-detail,
+    .contact-section,
+    .main-category-section,
+    .xnk-services,
+    .hl-why-choose-us,
+    .job-opportunity {
+        max-width: 100% !important;
+        width: 100% !important;
+        box-sizing: border-box;
+    }
+
+    .container-detail,
+    .main-category-section .container,
+    .xnk-services .container,
+    .hl-why-choose-us .container,
+    .job-opportunity,
+    .news-archive-page .container {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+
+    .header-split > *,
+    .content-split > *,
+    .contact-grid > *,
+    .job-flex-wrapper > *,
+    .container-detail [style*="flex"] {
+        flex: 1 1 auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box;
+    }
+
+    .header-split,
+    .content-split,
+    .job-flex-wrapper {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .service-banner,
+    .industrial-banner,
+    .agri-banner,
+    .field-banner-xnk,
+    .category-banner,
+    .about-banner,
+    .contact-banner,
+    .recruitment-hero,
+    .page-banner {
+        min-height: 320px !important;
+        height: auto !important;
+        padding: calc(var(--header-height) + 48px) 16px 56px !important;
+        background-attachment: scroll !important;
+        box-sizing: border-box;
+    }
+
+    .service-banner h1,
+    .industrial-banner h1,
+    .agri-banner h1,
+    .field-banner-xnk h1,
+    .category-banner h1,
+    .about-banner h1,
+    .contact-banner h1,
+    .recruitment-hero h1,
+    .page-banner h1 {
+        font-size: clamp(30px, 9vw, 42px) !important;
+        line-height: 1.15 !important;
+    }
+
+    .banner-content,
+    .banner-content-premium,
+    .hero-overlay {
+        width: 100%;
+        max-width: 100% !important;
+        text-align: center;
+    }
+
+    .job-sidebar-red {
+        position: static !important;
+    }
+
+    .job-main-content,
+    .job-sidebar-red {
+        padding: 24px 18px !important;
+    }
+
+    .stat-section {
+        padding: 42px 0 !important;
+        margin-top: 34px !important;
+    }
+
+    .stat-container {
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+        padding: 0 14px;
+    }
+
+    .stat-item {
+        padding: 0 4px;
+    }
+
+    .stat-item h4 {
+        font-size: 26px !important;
+    }
+
+    .stat-item p {
+        font-size: 11px !important;
+        line-height: 1.25 !important;
+    }
+
+    .service-content-split .section-title {
+        margin-bottom: 16px !important;
+    }
+
+    .service-box {
+        min-width: 0 !important;
+    }
+
+    .s-content {
+        padding: 22px !important;
+    }
+
+    .s-content h4 {
+        min-height: 0 !important;
+        font-size: 18px !important;
+    }
+
+    .s-content p {
+        min-height: 0 !important;
+        font-size: 13px !important;
+        line-height: 1.45 !important;
+        -webkit-line-clamp: 5;
+        line-clamp: 5;
+    }
+
+    .field-detail-page .services-grid {
+        gap: 20px;
+    }
+
+    .field-detail-page .service-box {
+        grid-template-columns: 1fr;
+        min-height: 0;
+    }
+
+    .field-detail-page .s-img {
+        min-height: 190px;
+        height: 190px;
+    }
+
+    .field-detail-page .s-content {
+        min-height: 0;
+        padding: 24px !important;
+    }
+
+    .field-detail-page .s-content p {
+        display: block !important;
+        overflow: visible !important;
+        -webkit-line-clamp: unset;
+        line-clamp: unset;
+    }
+
+    .contact-grid {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 28px !important;
+        margin-top: 24px !important;
+    }
+
+    .contact-form-container {
+        padding: 24px 16px !important;
+        border-radius: 12px !important;
+    }
+
+    .info-item {
+        gap: 12px !important;
+    }
+
+    .info-item p {
+        min-width: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .map-box iframe {
+        height: 260px !important;
+    }
+
+    .news-archive-page .container {
+        width: calc(100% - 32px) !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    .news-grid {
+        grid-template-columns: 1fr !important;
+        gap: 22px !important;
+        margin-top: 24px !important;
+    }
+
+    .news-item {
+        border-radius: 10px !important;
+    }
+
+    .pagination {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .recruitment-hero {
+        min-height: 360px !important;
+    }
+
+    .filter-container {
+        flex-direction: column;
+        gap: 12px !important;
+        width: 100%;
+        margin-top: 18px;
+    }
+
+    .filter-item {
+        width: 100%;
+        flex: 1 1 auto;
+        padding: 12px 14px !important;
+        gap: 10px !important;
+    }
+
+    .filter-item .label {
+        flex: 0 0 78px;
+        font-size: 12px !important;
+    }
+
+    .filter-item select {
+        min-width: 0;
+        font-size: 13px !important;
+    }
+
+    .job-opportunity {
+        padding: 48px 16px !important;
+    }
+
+    .job-list-section {
+        border: 1px solid #eee;
+        border-radius: 10px;
+        padding: 0 !important;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .recruitment-table {
+        min-width: 680px !important;
+        margin-top: 0 !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .partners-header h3,
+    .section-header h2,
+    .section-title {
+        font-size: 24px !important;
+    }
+
+    .main-intro-section {
+        min-height: 560px;
+    }
+
+    .main-intro-text-box h1 {
+        font-size: 34px;
+    }
+
+    .image-stack {
+        height: 280px;
+    }
+
+    .partners-slider {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* --- STABLE MOBILE/TABLET RESPONSIVE OVERRIDES --- */
+@media (max-width: 900px) {
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    body {
+        padding-top: 64px;
+    }
+
+    body.mobile-menu-open::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.42);
+        z-index: 1000;
+        pointer-events: auto;
+    }
+
+    .header {
+        height: 64px;
+        box-shadow: 0 2px 14px rgba(0, 0, 0, 0.12) !important;
+        z-index: 1600;
+    }
+
+    .header-container {
+        width: calc(100% - 24px);
+        height: 64px;
+    }
+
+    .header .logo-header {
+        height: 40px;
+        max-width: 88px;
+    }
+
+    .mobile-menu-toggle {
+        position: relative;
+        width: 48px;
+        height: 48px;
+        border-radius: 6px;
+        z-index: 1700;
+        touch-action: manipulation;
+    }
+
+    .menu,
+    .header-right {
+        left: 0;
+        right: auto;
+        width: min(320px, 86vw);
+        display: flex !important;
+        transform: translateX(-105%);
+        transition: transform 0.25s ease;
+        box-shadow: none;
+        pointer-events: auto;
+    }
+
+    .menu {
+        top: 0;
+        bottom: 0;
+        max-height: none;
+        height: 100dvh;
+        padding: 82px 14px 150px;
+        overflow-y: auto;
+        flex-direction: column;
+        align-items: stretch;
+        border-right: 1px solid #eee;
+        z-index: 1500;
+    }
+
+    .header-right {
+        top: auto;
+        bottom: 0;
+        min-height: 132px;
+        padding: 14px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        border-top: 1px solid #eee;
+        border-right: 1px solid #eee;
+        z-index: 1501;
+    }
+
+    .menu.open,
+    .header-right.open {
+        transform: translateX(0);
+    }
+
+    .menu a {
+        min-height: 46px;
+        font-size: 14px;
+        line-height: 1.2;
+        white-space: normal;
+        position: relative;
+        z-index: 2;
+        pointer-events: auto;
+        touch-action: manipulation;
+    }
+
+    .dropdown-content {
+        display: block !important;
+        padding: 0 0 8px 10px;
+    }
+
+    .dropdown-content li a {
+        min-height: 40px;
+        font-size: 12px;
+        padding-left: 14px;
+    }
+
+    .lang-selector {
+        justify-content: center;
+        min-height: 32px;
+    }
+
+    .search-container input {
+        width: 100%;
+        height: 42px;
+    }
+
+    .main-intro-section {
+        min-height: 560px;
+        height: auto;
+        padding-top: 34px;
+    }
+
+    .main-intro-text-box h1,
+    .service-banner h1,
+    .industrial-banner h1,
+    .agri-banner h1,
+    .field-banner-xnk h1,
+    .category-banner h1,
+    .about-banner h1,
+    .contact-banner h1,
+    .recruitment-hero h1,
+    .page-banner h1 {
+        font-size: 34px !important;
+        line-height: 1.14 !important;
+        letter-spacing: 0 !important;
+    }
+
+    .refined-title,
+    .section-title,
+    .section-header h2,
+    .partners-header h3 {
+        font-size: 28px !important;
+        line-height: 1.22 !important;
+        letter-spacing: 0 !important;
+    }
+
+    .main-intro-description,
+    .refined-p,
+    .desc-text,
+    .contact-info p,
+    .hl-field-info p,
+    .category-info p,
+    .service-box p,
+    .strength-card p,
+    .industrial-card p,
+    .agri-card p {
+        font-size: 15px !important;
+        line-height: 1.65 !important;
+    }
+
+    .container,
+    .container-custom,
+    .container-detail,
+    .main-intro-container,
+    .footer-container {
+        width: calc(100% - 32px) !important;
+        max-width: 100% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        box-sizing: border-box;
+    }
+
+    .service-banner,
+    .industrial-banner,
+    .agri-banner,
+    .field-banner-xnk,
+    .category-banner,
+    .about-banner,
+    .contact-banner,
+    .recruitment-hero,
+    .page-banner {
+        min-height: 300px !important;
+        height: auto !important;
+        padding: 46px 16px 50px !important;
+        background-attachment: scroll !important;
+    }
+
+    .contact-section,
+    .main-category-section,
+    .xnk-services,
+    .hl-why-choose-us,
+    .job-opportunity,
+    .news-archive-page {
+        padding-top: 48px !important;
+        padding-bottom: 48px !important;
+    }
+
+    img,
+    iframe,
+    video {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        padding-top: 60px;
+    }
+
+    .header,
+    .header-container {
+        height: 60px;
+    }
+
+    .header .logo-header {
+        height: 36px;
+        max-width: 78px;
+    }
+
+    .mobile-menu-toggle {
+        width: 46px;
+        height: 46px;
+    }
+
+    .menu,
+    .header-right {
+        width: min(300px, 88vw);
+    }
+
+    .main-intro-text-box h1,
+    .service-banner h1,
+    .industrial-banner h1,
+    .agri-banner h1,
+    .field-banner-xnk h1,
+    .category-banner h1,
+    .about-banner h1,
+    .contact-banner h1,
+    .recruitment-hero h1,
+    .page-banner h1 {
+        font-size: 30px !important;
+    }
+
+    .refined-title,
+    .section-title,
+    .section-header h2,
+    .partners-header h3 {
+        font-size: 24px !important;
+    }
+
+    .main-intro-section {
+        min-height: 520px;
+    }
+
+    .service-banner,
+    .industrial-banner,
+    .agri-banner,
+    .field-banner-xnk,
+    .category-banner,
+    .about-banner,
+    .contact-banner,
+    .recruitment-hero,
+    .page-banner {
+        min-height: 260px !important;
+        padding: 38px 16px 42px !important;
+    }
+
+    .stat-container {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .stat-item h4 {
+        font-size: 28px !important;
+    }
+
+    .stat-item p {
+        font-size: 12px !important;
+    }
+
+    .contact-form-container {
+        padding: 20px 14px !important;
+    }
+
+    .map-box iframe {
+        height: 220px !important;
+    }
+
+    .filter-item {
+        align-items: flex-start !important;
+        flex-direction: column;
+    }
+
+    .filter-item .label {
+        flex: none;
+    }
+
+    .recruitment-table {
+        min-width: 620px !important;
     }
 }
 
